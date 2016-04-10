@@ -8,6 +8,7 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Response;
 
 class Handler extends ExceptionHandler
 {
@@ -45,6 +46,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        return parent::render($request, $e);
+        if($request->wantsJson()) {
+            return Response::json(['message' => $e->getMessage()], 500);
+        } else {
+            return parent::render($request, $e);
+        }
     }
 }

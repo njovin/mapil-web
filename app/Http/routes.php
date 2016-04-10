@@ -14,6 +14,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/test', function (Illuminate\Http\Request $request) {
+    return response()->json(['ok' => 'cool']);
+});
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/addresses', 'EmailAddressController@index');
+Route::get('/logs', 'LogController@index');

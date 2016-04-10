@@ -4,8 +4,9 @@ namespace Mapil\Http\Controllers;
 
 use Mapil\Http\Requests;
 use Illuminate\Http\Request;
+use \Auth;
 
-class HomeController extends Controller
+class EmailAddressController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -24,6 +25,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('email_addresses')->with('email_addresses',Auth::user()->email_addresses);
     }
 }
