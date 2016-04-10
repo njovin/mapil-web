@@ -1,0 +1,16 @@
+extends ../layout_auth
+
+block content
+    form.auth_form(name="signup", action="/signup", method="post")
+        if errors
+            each error in errors
+                div.error= error
+        label Email
+        input(type="text", name="email",value=email)
+        label Password
+        input(type="password", name="password")
+        label Plan
+        select(name="plan")
+            option(value='developer') Developer
+            option(value='pro') Pro
+        input(type="submit", name="Sign Up")

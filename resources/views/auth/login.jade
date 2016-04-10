@@ -1,0 +1,11 @@
+extends ../layout_auth
+
+block content
+    form.auth_form(name="login", action="/login", method="post")
+        each message in flash
+            div.error= message.message 
+        label Email
+        input(type="text", name="email",value=email)
+        label Password
+        input(type="password", name="password")
+        input(type="submit", value="Sign Up")
