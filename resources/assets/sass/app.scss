@@ -2,10 +2,12 @@
 @import "neat/neat";
 @import "base/base";
 
-@import "../components/flashes";
-@import ".variables";
+@import "components/flashes";
+@import "variables";
 
-
+body {
+    // font-family: "Courier New", Courier, monospace;
+}
 
 .container {
     @include outer-container;
@@ -23,4 +25,8 @@ form.auth_form {
         @include span-columns(12);
         @include shift(0);
     }
+}
+
+.text-center {
+    text-align: center;
 }

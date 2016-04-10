@@ -17,11 +17,16 @@
         "symfony/dom-crawler": "2.8.*|3.0.*"
     },
     "autoload": {
+        "files": [
+            "app/Helpers/DebugHelpers.php",
+            "app/Helpers/DataHelpers.php",
+            "app/Helpers/AuthHelpers.php"
+        ],        
         "classmap": [
             "database"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "Mapil\\": "app/"
         }
     },
     "autoload-dev": {

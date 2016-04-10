@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace Mapil\Events;
 
 abstract class Event
 {

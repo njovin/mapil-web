@@ -1,5 +1,5 @@
 // Typography
-$base-font-family: $helvetica;
+$base-font-family: $monospace;
 $heading-font-family: $base-font-family;
 
 // Font Sizes
@@ -15,11 +15,13 @@ $base-spacing: $base-line-height * 1em;
 $small-spacing: $base-spacing / 2;
 $base-z-index: 0;
 
+@import "../variables";
+
 // Colors
-$blue: #1565c0;
-$dark-gray: #333;
-$medium-gray: #999;
-$light-gray: #ddd;
+$blue: $blue-300;
+$dark-gray: darken($gray-300,20%);
+$medium-gray: $gray-300;
+$light-gray: lighten($gray-300,20%);
 
 // Font Colors
 $base-font-color: $dark-gray;
