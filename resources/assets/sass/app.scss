@@ -3,6 +3,8 @@
 @import "base/base";
 
 @import "components/flashes";
+@import "components/growl";
+@import "components/flexboxes";
 @import "variables";
 
 body {
@@ -47,7 +49,28 @@ body {
       }         
   }    
 }
-
+.api-secret-group {
+    .toggle-show, .toggle-hide {
+        color: $blue-300;
+        cursor: pointer;
+    }
+    &:not(.shown) {
+        .api-secret, .toggle-hide {
+            display: none;
+        }    
+        .toggle-show {
+            display: inline;
+        }        
+    }
+    &.shown {
+        .api-secret, .toggle-hide {
+            display: inline;
+        }           
+        .toggle-show {
+            display: none;
+        }
+    }
+}
 .container {
     @include outer-container;
     padding: 0 10px;
@@ -57,7 +80,7 @@ body {
     display: none;
 }
 
-div.email-addresses {
+div.email-addresses, div.email-addresses-hero {
     @include span-columns(8);
     @include shift(2);
 
@@ -89,6 +112,11 @@ form.auth_form {
 }
 
 header.navigation {
+    img {
+        float: left;
+        margin-left: 20px;
+        margin-top: 5px;
+    }
     margin-bottom: 20px;
   $base-border-color: $gainsboro !default;
   $base-border-radius: 3px !default;

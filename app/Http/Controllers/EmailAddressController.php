@@ -5,6 +5,7 @@ namespace Mapil\Http\Controllers;
 use Mapil\Http\Requests;
 use Illuminate\Http\Request;
 use \Auth;
+use Mapil\Models\EmailAddress;
 
 class EmailAddressController extends Controller
 {
@@ -26,5 +27,27 @@ class EmailAddressController extends Controller
     public function index()
     {
         return view('email_addresses')->with('email_addresses',Auth::user()->email_addresses);
+    }
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function save(Request $request)
+    {
+        $email = new EmailAddress();
+        $email->email = $request->input('email') . '@email.mapil.co';
+        $email->user_id = Auth::user()->id;
+        $email->save();
+
+        return response()->json(['new_token' => csrf_token(),'id' => $email->id,'email' => $email->email]);        
+    }    
+    public function delete(Request $request)
+    {
+        $email = EmailAddress::whereId($request->input('id'))->whereUserId(Auth::user()->id)->first();
+        if($email) {
+            $email->delete();
+        }
+        return response()->json(['new_token' => csrf_token()]);        
     }
 }

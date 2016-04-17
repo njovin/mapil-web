@@ -27,3 +27,13 @@ function pre_dump( $data, $exit = false )
         exit;
     }
 }
+
+function enable_query_log($connection = 'mysql')
+{
+    DB::connection($connection)->enableQueryLog();
+}
+
+function dump_query_log($connection = 'mysql')
+{
+    pre_dump(DB::connection($connection)->getQueryLog());
+}

@@ -2,15 +2,50 @@
 
 @section('content')
     <div class='email-addresses'>
+
         <form id='add-email-address-form' onsubmit="return saveAddress()">
             <h1>Add Email Address</h1>
-            <input type='text' id='new-email-address' onkeyup="updatePreview()">
+            <input autocomplete="off" type='text' id='new-email-address' onkeyup="updatePreview()">
             <div id='address-error' class='flash-error' style='display: none'>You may only use numbers, letters, and underscores.  Do not include the domain.</div>
             <span id='address-preview'>Enter the mailbox name you'd like to create (@email.mapil.co will be added automatically)</span>
             <br><br>
             <button type='submit'>Create</button>
             <button type='button' class='gray' onclick="toggleForm()">Cancel</button>
-        </form>        
+        </form>   
+
+        <div class="flex-boxes">
+            <div class="flex-box">
+                
+                <h1 class="flex-title">Welcome to Mapil. These are your email addresses</h1>
+
+                <p class='text-left'>
+                    To use the system you'll first need to create an email address.  Click the button below to get started.
+                </p>
+                <p>
+                    Any mail sent to these addresses will show up on the Logs page.  You can also access them via the API.  
+                    @if(Auth::user()->api_credentials()->first())
+                        Here are your API credentials (these are normally found on the Account page):
+                        </p>                
+                        <p>
+                        <strong>Token:</strong> {{Auth::user()->api_credentials()->first()->token}}<br />
+                        <strong>Secret:</strong> 
+                        <span id='api-secret-group' class='api-secret-group'>
+                            <span class='api-secret'>
+                                {{Auth::user()->api_credentials()->first()->secret}}
+                            </span>
+                            <span class='toggle-show' onclick="toggleSecret()">
+                                Show
+                            </span>
+                            <span class='toggle-hide' onclick="toggleSecret()">
+                                Hide
+                            </span>                            
+                        </span>
+                    @endif
+                </p>                
+            </div>
+        </div>  
+
+
         <table>
             <thead>
                 <tr>
@@ -18,18 +53,19 @@
                     <th class='text-right'><button class='green' onclick="toggleForm()">Add Address</button></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id='email-table-body'>
                 @foreach($email_addresses as $email)
-                    <tr>
+                    <tr id='row-{{$email->id}}'>
                         <td>{{ $email->email }}</td>
-                        <td class='text-right'><button class='red'>Delete</button></td>
+                        <td class='text-right'><button class='red' onclick="deleteAddress('{{ $email->id }}')">Delete</button></td>
                     </tr>
                 @endforeach
             </tbody>        
         </table>
     </div>
-
+{{ csrf_field() }}
 <script>
+    var csrf_token = "{{ csrf_token() }}";
     function toggleForm() {
         $('#add-email-address-form').toggle();
         $('.email-addresses table').toggle();
@@ -38,13 +74,37 @@
         var pattern = new RegExp(/^[a-zA-Z0-9_]*$/);
         return pattern.test(val);
     }    
-    function saveAddress() {
-        http('/test','GET',{},function(err, response){
+    function deleteAddress(id) 
+    {   
+        if(!confirm('Are you sure you want to delete this address?')) {
+            return;
+        }
+        http('/addresses','DELETE',{_token: csrf_token, id: id},function(err, response){
             if(err) {
+                $.growl.error({ message: err, fixed: true });
                 return;
             }
+            csrf_token = response.new_token;
+            $('#row-' + id).remove();
+            $.growl.notice({ message: "Address deleted"});
+        });
+    }
+    function saveAddress() {
+        http('/addresses','POST',{_token: csrf_token, email: $('#new-email-address').val()},function(err, response){
+            if(err) {
+                $.growl.error({ message: err, fixed: true });
+                return;
+            }
+            csrf_token = response.new_token;
+            $('#email-table-body').prepend('<tr id="row-' + response.id + '"><td>' + response.email + "</td><td class='text-right'><button class='red' onclick=\"deleteAddress('" + response.id + "')\">Delete</button></td></tr>");
+            $('#new-email-address').val('');
+            $.growl.notice({ message: "Address saved"});
+            toggleForm();
         });
         return false;
+    }
+    function toggleSecret() {
+        $('#api-secret-group').toggleClass('shown');
     }
     function updatePreview() {
         var val = $('#new-email-address').val();

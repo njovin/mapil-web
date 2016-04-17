@@ -16,7 +16,8 @@ elixir(function(mix) {
     mix.sass('app.scss')
 
     .scripts([
-        'http.js'
+        'http.js',
+        'jquery.growl.js'
     ])
 
     .version(['public/js/all.js','public/css/app.css'])

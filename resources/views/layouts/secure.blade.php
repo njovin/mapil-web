@@ -17,6 +17,7 @@
     <header class="navigation" role="banner">
       <div class="navigation-wrapper">
         <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+        <img src='header-logo.png'>
         <nav role="navigation">
           <ul id="js-navigation-menu" class="navigation-menu show">
             <li class="nav-link"><a href="/logs">Logs</a></li>

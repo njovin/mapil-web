@@ -5,8 +5,8 @@ function http(url, method, data, cb)
             cb(null, data);
         }, 
         headers: { 
-            Accept : "application/json; charset=utf-8",
-            "Content-Type": "application/json; charset=utf-8"
+            Accept : "application/json; charset=utf-8"
+            // "Content-Type": "application/json; charset=utf-8"
         },
         url: url, 
         method: method, 

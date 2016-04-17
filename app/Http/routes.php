@@ -14,10 +14,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function (Illuminate\Http\Request $request) {
-    return response()->json(['ok' => 'cool']);
+Route::post('/test', function (Illuminate\Http\Request $request) {
+    // throw new Exception('hey');
+    return response()->json(['new_token' => csrf_token(),'id' => 123,'email' => $request->input('email')]);
 });
 Route::auth();
 
 Route::get('/addresses', 'EmailAddressController@index');
+Route::post('/addresses', 'EmailAddressController@save');
+Route::delete('/addresses', 'EmailAddressController@delete');
 Route::get('/logs', 'LogController@index');
