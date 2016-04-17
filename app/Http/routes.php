@@ -13,10 +13,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::post('/test', function (Illuminate\Http\Request $request) {
-    // throw new Exception('hey');
-    return response()->json(['new_token' => csrf_token(),'id' => 123,'email' => $request->input('email')]);
+Route::get('/mongo', function () {
+$i = 0;
+while($i < 100) {
+    $client = new MongoDB\Client("mongodb://localhost:27017");
+    $collection = $client->mapil->emails;
+    $result = $collection->insertOne( [ 'subject' => 'Hinterland-' . $i, 'from' => 'hey2@me.com', 'user_id' => 1 ] );   
+    $result = $collection->insertOne( [ 'subject' => 'Hinterland-' . $i, 'from' => 'hey2@me.com', 'user_id' => 1 ] );   
+    $i++;
+}
 });
 Route::auth();
 
@@ -24,3 +29,4 @@ Route::get('/addresses', 'EmailAddressController@index');
 Route::post('/addresses', 'EmailAddressController@save');
 Route::delete('/addresses', 'EmailAddressController@delete');
 Route::get('/logs', 'LogController@index');
+Route::get('/api-docs', 'ApiDocController@index');

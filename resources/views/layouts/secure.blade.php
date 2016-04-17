@@ -17,13 +17,13 @@
     <header class="navigation" role="banner">
       <div class="navigation-wrapper">
         <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
-        <img src='header-logo.png'>
+        <a href='/'><img src='header-logo.png'></a>
         <nav role="navigation">
           <ul id="js-navigation-menu" class="navigation-menu show">
-            <li class="nav-link"><a href="/logs">Logs</a></li>
             <li class="nav-link"><a href="/addresses">Email Addresses</a></li>
+            <li class="nav-link"><a href="/logs">Logs</a></li>
             <li class="nav-link"><a href="/account">Account</a></li>
-            <li class="nav-link"><a href="/api_docs">API Docs</a></li>
+            <li class="nav-link"><a href="/api-docs">API Docs</a></li>
             <li class="nav-link"><a href="/logout">Logout</a></li>
           </ul>
         </nav>

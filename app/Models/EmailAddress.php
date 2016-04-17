@@ -4,6 +4,7 @@ namespace Mapil\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Mapil\Exceptions\SafeException;
+use Webpatser\Uuid\Uuid;
 
 class EmailAddress extends Model
 {
@@ -27,6 +28,7 @@ class EmailAddress extends Model
     {
         EmailAddress::creating(function ($model) {
             $model->email = strtolower($model->email);
+            $model->uuid = Uuid::generate();
             // check for dupes
             $conflict = EmailAddress::whereEmail($model->email)->first();
             if(in_array($model->email, $model->reserved_addresses) || $conflict) {

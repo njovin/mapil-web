@@ -13,10 +13,10 @@
             <button type='button' class='gray' onclick="toggleForm()">Cancel</button>
         </form>   
 
-        <div class="flex-boxes">
+        <div class="flex-boxes" id='intro'>
             <div class="flex-box">
                 
-                <h1 class="flex-title">Welcome to Mapil. These are your email addresses</h1>
+                <h1 class="flex-title">Welcome to Mapil. These are your email addresses.</h1>
 
                 <p class='text-left'>
                     To use the system you'll first need to create an email address.  Click the button below to get started.
@@ -55,20 +55,20 @@
             </thead>
             <tbody id='email-table-body'>
                 @foreach($email_addresses as $email)
-                    <tr id='row-{{$email->id}}'>
+                    <tr id='row-{{$email->uuid}}'>
                         <td>{{ $email->email }}</td>
-                        <td class='text-right'><button class='red' onclick="deleteAddress('{{ $email->id }}')">Delete</button></td>
+                        <td class='text-right'><button class='red' onclick="deleteAddress('{{ $email->uuid }}')">Delete</button></td>
                     </tr>
                 @endforeach
             </tbody>        
         </table>
     </div>
-{{ csrf_field() }}
 <script>
     var csrf_token = "{{ csrf_token() }}";
     function toggleForm() {
         $('#add-email-address-form').toggle();
         $('.email-addresses table').toggle();
+        $('#intro').toggle();
     }
     function validate(val) {
         var pattern = new RegExp(/^[a-zA-Z0-9_]*$/);

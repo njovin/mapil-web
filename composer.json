@@ -7,7 +7,9 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
-        "predis/predis": "*"
+        "predis/predis": "*",
+        "webpatser/laravel-uuid": "2.*",
+         "mongodb/mongodb": "*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

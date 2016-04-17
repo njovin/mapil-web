@@ -40,11 +40,11 @@ class EmailAddressController extends Controller
         $email->user_id = Auth::user()->id;
         $email->save();
 
-        return response()->json(['new_token' => csrf_token(),'id' => $email->id,'email' => $email->email]);        
+        return response()->json(['new_token' => csrf_token(),'id' => $email->uuid,'email' => $email->email]);        
     }    
     public function delete(Request $request)
     {
-        $email = EmailAddress::whereId($request->input('id'))->whereUserId(Auth::user()->id)->first();
+        $email = EmailAddress::whereUuid($request->input('id'))->whereUserId(Auth::user()->id)->first();
         if($email) {
             $email->delete();
         }
