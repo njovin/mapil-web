@@ -5,6 +5,7 @@ namespace Mapil\Http\Controllers;
 use Mapil\Http\Requests;
 use Illuminate\Http\Request;
 use MongoDB\Client;
+use MongoDB\BSON\ObjectID;
 use Auth;
 
 class LogController extends Controller
@@ -51,16 +52,25 @@ class LogController extends Controller
             ->with('offset',$offset)
             ->with('page_size',$page_size);
     }
-    public function viewHtml(Request $request, $id) {
-
-    }
-    public function viewText(Request $request) {
+    private function getEmail($id) {
         $client = new Client(env('MONGO_URL'));
         $collection = $client->mapil->emails;
-        $emailCursor = $collection->find( [ '_id' => $id ]);
-        pre_dump($emailCursor->current(),1);
+        $options = ['projection' => ['_id' => 0,'user_id' => 0,'received_at' => 0]];
+        return $collection->findOne( [ '_id' => ObjectID($id) ], $options);
     }
-    public function viewJson(Request $request) {
+    public function viewHtml($id) 
+    {
+        $email = $this->getEmail($id);
+        return $this->response()->make(@$email->html, $status = 200, $headers = ['Content-Type: text/html']);
+    }
+    public function viewText($id) 
+    {
+        $email = $this->getEmail($id);
+        return $this->response()->make(@$email->text, $status = 200, $headers = ['Content-Type: text/plain']);
+    }
+    public function viewJson($id) {
+        $email = $this->getEmail($id);
 
+        return $this->response()->make(@$email, $status = 200, $headers = ['Content-Type: application/json']);
     }
 }

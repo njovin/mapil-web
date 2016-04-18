@@ -29,7 +29,7 @@ Route::get('/addresses', 'EmailAddressController@index');
 Route::post('/addresses', 'EmailAddressController@save');
 Route::delete('/addresses', 'EmailAddressController@delete');
 Route::get('/logs', 'LogController@index');
-Route::get('/logs/{id}/txt', 'LogController@viewText');
+Route::get('/logs/{id}/text', 'LogController@viewText');
 Route::get('/logs/{id}/html', 'LogController@viewHtml');
 Route::get('/logs/{id}/json', 'LogController@viewJson');
 Route::get('/api-docs', 'ApiDocController@index');
