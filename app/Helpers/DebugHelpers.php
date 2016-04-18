@@ -28,12 +28,12 @@ function pre_dump( $data, $exit = false )
     }
 }
 
-function enable_query_log($connection = 'mysql')
+function enable_query_log($connection = 'pgsql')
 {
     DB::connection($connection)->enableQueryLog();
 }
 
-function dump_query_log($connection = 'mysql')
+function dump_query_log($connection = 'pgsql')
 {
     pre_dump(DB::connection($connection)->getQueryLog());
 }

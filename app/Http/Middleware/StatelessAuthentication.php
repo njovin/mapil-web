@@ -16,7 +16,10 @@ class StatelessAuthentication
      */
     public function handle($request, Closure $next)
     {
-        return Auth::guard('api')->onceBasic() ?: $next($request);
+        enable_query_log();
+        $foo =  Auth::guard('api')->onceBasic('token') ?: $next($request);
+        dump_query_log();
+        die();
     }
 
 }

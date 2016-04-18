@@ -72,7 +72,7 @@ return [
 
         'api' => [
             'driver' => 'eloquent',
-            'table' => Mapil\Models\ApiCredential::class,
+            'model' => Mapil\Models\ApiCredential::class,
         ],
     ],
 
