@@ -56,21 +56,21 @@ class LogController extends Controller
         $client = new Client(env('MONGO_URL'));
         $collection = $client->mapil->emails;
         $options = ['projection' => ['_id' => 0,'user_id' => 0,'received_at' => 0]];
-        return $collection->findOne( [ '_id' => ObjectID($id) ], $options);
+        return $collection->findOne( [ '_id' => new ObjectID($id) ], $options);
     }
     public function viewHtml($id) 
     {
         $email = $this->getEmail($id);
-        return $this->response()->make(@$email->html, $status = 200, $headers = ['Content-Type: text/html']);
+        return $response()->make(@$email->html, $status = 200, $headers = ['Content-Type: text/html']);
     }
     public function viewText($id) 
     {
         $email = $this->getEmail($id);
-        return $this->response()->make(@$email->text, $status = 200, $headers = ['Content-Type: text/plain']);
+        return $response()->make(@$email->text, $status = 200, $headers = ['Content-Type: text/plain']);
     }
     public function viewJson($id) {
         $email = $this->getEmail($id);
 
-        return $this->response()->make(@$email, $status = 200, $headers = ['Content-Type: application/json']);
+        return $response()->make(@$email, $status = 200, $headers = ['Content-Type: application/json']);
     }
 }
