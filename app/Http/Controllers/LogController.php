@@ -55,7 +55,16 @@ class LogController extends Controller
     private function getEmail($id) {
         $client = new Client(env('MONGO_URL'));
         $collection = $client->mapil->emails;
-        $options = ['projection' => ['_id' => 0,'user_id' => 0,'received_at' => 0]];
+        
+        // exclude these columns from the JSON response
+        $options = ['projection' => [
+            '_id' => 0,
+            'user_id' => 0,
+            'date' => 0,
+            'receivedDate' => 0,
+            'mapil_email' => 0,
+            'received_at' => 0]];
+
         return $collection->findOne( [ '_id' => new ObjectID($id) ], $options);
     }
     public function viewHtml($id) 
