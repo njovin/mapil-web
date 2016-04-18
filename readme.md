@@ -28,3 +28,8 @@ sudo swapon /swapfile
 pip install -U pyopenssl ndg-httpsclient pyasn1
 # might need to do an npm install initially while swap is on
 sudo swapoff /swapfile
+
+ON SMTP server: 
+vi /etc/sudoers/pm2
+ADD 
+njovin ALL=NOPASSWD: /usr/local/bin/pm2 restart 0
