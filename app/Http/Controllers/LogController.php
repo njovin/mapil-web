@@ -51,4 +51,16 @@ class LogController extends Controller
             ->with('offset',$offset)
             ->with('page_size',$page_size);
     }
+    public function viewHtml(Request $request, $id) {
+
+    }
+    public function viewText(Request $request) {
+        $client = new Client(env('MONGO_URL'));
+        $collection = $client->mapil->emails;
+        $emailCursor = $collection->find( [ '_id' => $id ]);
+        pre_dump($emailCursor->current(),1);
+    }
+    public function viewJson(Request $request) {
+
+    }
 }
