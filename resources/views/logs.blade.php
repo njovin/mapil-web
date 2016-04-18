@@ -38,7 +38,8 @@
                         <td>{{ @$email->mapil_email }}</td>
                         <td class='text-right'>
                             <a href='/logs/{{$email->_id}}/text' class='button gray'>txt</a>
-                            <a href='/logs/{{$email->_id}}/html' class='button gray'>html</a>
+                            <a href='/logs/{{$email->_id}}/html' class='button gray'>&#60; &#62;</a>
+                            <a href='/logs/{{$email->_id}}/json' class='button gray'>&#123; &#124;</a>
                         </td>
                     </tr>
                 @endforeach
