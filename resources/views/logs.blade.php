@@ -34,8 +34,8 @@
                     <tr id='row-{{$email->_id}}'>
                         <td>{{ $email->_id }}</td>
                         <td>{{ $email->_id }}</td>
-                        <td>{{ $email->from[0]->email }}</td>
-                        <td>{{ $email->mapil_email }}</td>
+                        <td>{{ @$email->from[0]->address }}</td>
+                        <td>{{ @$email->mapil_email }}</td>
                         <td class='text-right'>
                             <a href='/logs/{{$email->_id}}/text' class='button gray'>txt</a>
                             <a href='/logs/{{$email->_id}}/html' class='button gray'>html</a>
