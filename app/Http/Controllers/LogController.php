@@ -34,7 +34,7 @@ class LogController extends Controller
         $count = $collection->count( [ 'user_id' => Auth::user()->id ]);
 
         $offset = ($page-1) * $page_size;
-        $options = ['limit' => $page_size, 'skip' => $offset];
+        $options = ['limit' => $page_size, 'skip' => $offset, 'sort' => ['received_at' => -1]];
 
         $emailCursor = $collection->find( [ 'user_id' => Auth::user()->id ], 
             $options
