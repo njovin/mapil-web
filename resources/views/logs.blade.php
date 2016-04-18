@@ -33,7 +33,7 @@
                 @foreach($emails as $email)
                     <tr id='row-{{$email->_id}}'>
                         <td>{{ $email->_id }}</td>
-                        <td>{{ $email->_id }}</td>
+                        <td>{{ @$email->received_at }}</td>
                         <td>{{ @$email->from[0]->address }}</td>
                         <td>{{ @$email->mapil_email }}</td>
                         <td class='text-right'>
