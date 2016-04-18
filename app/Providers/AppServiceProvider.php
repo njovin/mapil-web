@@ -35,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
             $z = array_rand(getAnimals());
 
             $email = new EmailAddress();
-            $email->email = getEmotions()[$x] . getColorNames()[$y] . getAnimals()[$z] . "@email.mapil.co";
+            $email->email = getEmotions()[$x] . getColorNames()[$y] . getAnimals()[$z] . "@mail.mapil.co";
             $email->user_id = $user->id;
             $email->save();            
         });        

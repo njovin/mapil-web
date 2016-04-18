@@ -7,7 +7,7 @@
             <h1>Add Email Address</h1>
             <input autocomplete="off" type='text' id='new-email-address' onkeyup="updatePreview()">
             <div id='address-error' class='flash-error' style='display: none'>You may only use numbers, letters, and underscores.  Do not include the domain.</div>
-            <span id='address-preview'>Enter the mailbox name you'd like to create (@email.mapil.co will be added automatically)</span>
+            <span id='address-preview'>Enter the mailbox name you'd like to create (@mail.mapil.co will be added automatically)</span>
             <br><br>
             <button type='submit'>Create</button>
             <button type='button' class='gray' onclick="toggleForm()">Cancel</button>
@@ -116,9 +116,9 @@
         $('#address-error').hide();
         $('#address-preview').show();
         if(val.length < 1) {
-            $('#address-preview').text("Enter the mailbox name you'd like to create (\@email.mapil.co will be added automatically)");
+            $('#address-preview').text("Enter the mailbox name you'd like to create (\@mail.mapil.co will be added automatically)");
         } else {
-            $('#address-preview').text("The address " + val + "\@email.mapil.co will be created");
+            $('#address-preview').text("The address " + val + "\@mail.mapil.co will be created");
         }
     }
 

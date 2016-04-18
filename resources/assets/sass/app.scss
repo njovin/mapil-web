@@ -7,6 +7,8 @@
 @import "components/flexboxes";
 @import "components/badges";
 @import "components/pagination";
+@import "pages/api-docs";
+
 @import "variables";
 
 body {
@@ -89,56 +91,7 @@ tr:nth-child(even) {
 #add-email-address-form {
     display: none;
 }
-div.api-docs {
-    @include span-columns(10);
-    @include shift(1);
-    @include media(max-width 800px) {
-        @include span-columns(12);
-        @include shift(0);
-    }    
-    h1 {
-        font-size: 2em;
-        margin-bottom: 0;
-    }   
-    h2 {
-        margin-top: 2em;
-        margin-bottom: 0;
-    }
-    .method-badge {
-        border-radius: 0;
-        font-weight: bold;
-        width: 100px;
-        color: #fff;
-        text-align: center;
-        font-size: 1.1em;
-        padding: 0.6em 1.2em .4em 1.2em;     
 
-    }
-    .badge-delete {
-        @extend .badge-error;
-        @extend .method-badge;
-    }
-    .badge-post {
-        @extend .badge-success;
-        @extend .method-badge;
-    }    
-    .badge-get {
-        @extend .badge-notice;
-        @extend .method-badge;
-    }    
-    .method-container {
-        display: table-row;
-    }
-    .badge-container {
-        display: table-cell;
-        padding-top: 10px;
-    }
-    .text-container {
-        display: table-cell;
-        padding-left: 20px;
-        line-height: 2em;
-    }
-}
 div.email-logs {
     @include span-columns(12);
     @include shift(0);

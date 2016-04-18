@@ -11,13 +11,13 @@ class EmailAddress extends Model
     use SoftDeletes;
 
     protected $reserved_addresses = [
-        "postmaster@email.mapil.co",
-        "hostmaster@email.mapil.co",
-        "webmaster@email.mapil.co",
-        "admin@email.mapil.co",
-        "administrator@email.mapil.co",
-        "nathan@email.mapil.co",
-        "njovin@email.mapil.co",
+        "postmaster@mail.mapil.co",
+        "hostmaster@mail.mapil.co",
+        "webmaster@mail.mapil.co",
+        "admin@mail.mapil.co",
+        "administrator@mail.mapil.co",
+        "nathan@mail.mapil.co",
+        "njovin@mail.mapil.co",
     ];
     /**
      * Bootstrap any application services.
@@ -38,11 +38,11 @@ class EmailAddress extends Model
     }
 
     protected $rules = array(
-        'email' => ['email',"required","regex:/[a-zA-Z0-9_]*@email.mapil.co/"],
+        'email' => ['email',"required","regex:/[a-zA-Z0-9_]*@mail.mapil.co/"],
         'user_id' => ['integer']
     );
     protected $messages = [
-        'email.regex' => "Email address must end in email.mapil.co"
+        'email.regex' => "Email address must end in mail.mapil.co"
     ];
 
     public function user() 

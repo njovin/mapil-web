@@ -36,7 +36,7 @@ class EmailAddressController extends Controller
     public function save(Request $request)
     {
         $email = new EmailAddress();
-        $email->email = $request->input('email') . '@email.mapil.co';
+        $email->email = $request->input('email') . '@mail.mapil.co';
         $email->user_id = Auth::user()->id;
         $email->save();
 
