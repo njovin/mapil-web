@@ -42,8 +42,8 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
-            'provider' => 'users',
+            'driver' => 'session',
+            'provider' => 'api',
         ],
     ],
 
@@ -70,10 +70,10 @@ return [
             'model' => Mapil\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'api' => [
+            'driver' => 'eloquent',
+            'table' => Mapil\Models\ApiCredential::class,
+        ],
     ],
 
     /*

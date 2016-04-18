@@ -10,26 +10,39 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/mongo', function () {
-$i = 0;
-while($i < 100) {
-    $client = new MongoDB\Client("mongodb://localhost:27017");
-    $collection = $client->mapil->emails;
-    $result = $collection->insertOne( [ 'subject' => 'Hinterland-' . $i, 'from' => 'hey2@me.com', 'user_id' => 1 ] );   
-    $result = $collection->insertOne( [ 'subject' => 'Hinterland-' . $i, 'from' => 'hey2@me.com', 'user_id' => 1 ] );   
-    $i++;
-}
-});
-Route::auth();
+Route::group(['middleware' => ['web']], function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
+    Route::get('/mongo', function () {
+    $i = 0;
+    while($i < 100) {
+        $client = new MongoDB\Client("mongodb://localhost:27017");
+        $collection = $client->mapil->emails;
+        $result = $collection->insertOne( [ 'subject' => 'Hinterland-' . $i, 'from' => 'hey2@me.com', 'user_id' => 1 ] );   
+        $result = $collection->insertOne( [ 'subject' => 'Hinterland-' . $i, 'from' => 'hey2@me.com', 'user_id' => 1 ] );   
+        $i++;
+    }
+    });
+    Route::auth();
 
-Route::get('/addresses', 'EmailAddressController@index');
-Route::post('/addresses', 'EmailAddressController@save');
-Route::delete('/addresses', 'EmailAddressController@delete');
-Route::get('/logs', 'LogController@index');
-Route::get('/logs/{id}/text', 'LogController@viewText');
-Route::get('/logs/{id}/html', 'LogController@viewHtml');
-Route::get('/logs/{id}/json', 'LogController@viewJson');
-Route::get('/api-docs', 'ApiDocController@index');
+    // Email address managemenr
+    Route::get('/email-addresses', 'EmailAddressController@index');
+    Route::post('/email-addresses', 'EmailAddressController@save');
+    Route::delete('/email-addresses', 'EmailAddressController@delete');
+
+    // email logs UI
+    Route::get('/email-logs', 'LogController@index');
+    Route::get('/email-logs/{id}/text', 'LogController@viewText');
+    Route::get('/email-logs/{id}/html', 'LogController@viewHtml');
+    Route::get('/email-logs/{id}/json', 'LogController@viewJson');
+
+    // API docs
+    Route::get('/api-docs', 'ApiDocController@index');
+});
+Route::group(['middleware' => ['api', 'auth.stateless']], function () {
+    // API
+    Route::get('/api/v1/email-addresses', 'ApiAddressController@index');
+});
+
+

@@ -13,7 +13,7 @@
 }
 </pre>          
 
-        <h2>/api/v1/addresses</h2>
+        <h2>/api/v1/email-addresses</h2>
         <div class='method-container'>
             <div class='badge-container'>
                 <span class="badge-get">GET</span> 
@@ -35,7 +35,7 @@
             </div>
         </div>
 
-        <h2>/api/v1/addresses/{address}</h2>
+        <h2>/api/v1/email-addresses/{address}</h2>
         <div class='method-container'>
             <div class='badge-container'>
                 <span class="badge-post">POST</span> 
@@ -65,7 +65,7 @@
             </div>
         </div>
 
-        <h2>/api/v1/addresses/{address}/messages</h2>
+        <h2>/api/v1/email-addresses/{address}/messages</h2>
         <div class='method-container'>
             <div class='badge-container'>
                 <span class="badge-get">GET</span>
@@ -81,7 +81,7 @@
             </div>
         </div>
 
-        <h2>/api/v1/addresses/{address}/messages{message_id}</h2>
+        <h2>/api/v1/email-addresses/{address}/messages{message_id}</h2>
         <div class='method-container'>
             <div class='badge-container'>
                 <span class="badge-get">GET</span>
@@ -97,7 +97,7 @@
             </div>
         </div>
 
-        <h2>/api/v1/addresses/{address}/messages{message_id}/html</h2>
+        <h2>/api/v1/email-addresses/{address}/messages{message_id}/html</h2>
         <div class='method-container'>
             <div class='badge-container'>
                 <span class="badge-get">GET</span>
@@ -107,7 +107,7 @@
             </div>
         </div>
 
-        <h2>/api/v1/addresses/{address}/messages{message_id}/text</h2>
+        <h2>/api/v1/email-addresses/{address}/messages{message_id}/text</h2>
         <div class='method-container'>
             <div class='badge-container'>
                 <span class="badge-get">GET</span>
