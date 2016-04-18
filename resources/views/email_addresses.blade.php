@@ -19,10 +19,7 @@
                 <h1 class="flex-title">Welcome to Mapil. These are your email addresses.</h1>
 
                 <p class='text-left'>
-                    To use the system you'll first need to create an email address.  Click the button below to get started.
-                </p>
-                <p>
-                    Any mail sent to these addresses will show up on the Logs page.  You can also access them via the API.  
+                    Any mail sent to these addresses will show up on the Email Logs page.  You can also access them via the API.  
                     @if(Auth::user()->api_credentials()->first())
                         Here are your API credentials (these are normally found on the Account page):
                         </p>                
