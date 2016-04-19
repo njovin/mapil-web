@@ -2,7 +2,7 @@
 @section('content')
     <div class='home'>
         <h1>Welcome to Mapil</h1>
-        Mapil is an email testing service for developers and QA teams.  You send us an email, we'll store it and let you query it via API. 
+        Mapil is an email testing service for developers and QA teams.  You send us an email, we'll store it and let you query it using our API. 
         <div class='text-center'>
             <a href='/register' class='button green'>Sign Up (it's free)</a>
         </div>
