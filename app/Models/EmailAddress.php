@@ -31,11 +31,8 @@ class EmailAddress extends Model
             $model->email = strtolower($model->email);
             $model->uuid = Uuid::generate();
 
-            if(get_class(Auth::user()) == User::class) {
-                $user = Auth::user();
-            } elseif(get_class(Auth::user()) == ApiCredential::class) {
-                $user = Auth::user()->user;
-            }
+            $user = User::find($model->user->id);
+            
             // check limits
             if( $user->email_addresses()->count() > $user->getEmailAddressLimit()) {
                 throw new SafeException("You have reached your limit of " . $user->getEmailAddressLimit() . " email addresses.");
