@@ -9,6 +9,7 @@
             <li>{{$message_count}}/10,000<span>Messages Used</span></li>
         </ul>
     </div>
+    
     <h1>Change Password</h1>
     <form role="form" method="POST" action="/account">
         {!! csrf_field() !!}  

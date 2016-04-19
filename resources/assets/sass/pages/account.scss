@@ -7,35 +7,40 @@ div.account {
         @include span-columns(12);
         @include shift(0);
     } 
-    .stats {
-      $base-spacing: 1.5em !default;
-      $dark-gray: #333 !default;
-      $base-font-color: $dark-gray !default;
-      $action-color: #477dca !default;
-      $stats-color: lighten($action-color, 10%);
-
-      padding: $base-spacing / 2;
-
-      ul {
-        padding: 0;
+    h1 {
+        font-size: 1.2em;        
     }
+    .stats {
 
-    li {
-        border-right: 1px solid transparentize($base-font-color, 0.8);
-        color: $stats-color;
-        display: inline;
-        float: left;
-        font-size: 1.2em;
-        line-height: 1.1em;
-        padding: 0 0.7em;
+        min-height: 80px;
+        $base-spacing: 1.5em !default;
+        $dark-gray: #333 !default;
+        $base-font-color: $dark-gray !default;
+        $action-color: #477dca !default;
+        $stats-color: lighten($action-color, 10%);
 
-        &:first-child {
-          padding-left: 0;
-      }
+        padding: $base-spacing / 2;
 
-      &:last-child {
-          border-right: 0;
-      }
+        ul {
+            padding: 0;
+        }
+
+        li {
+            border-right: 1px solid transparentize($base-font-color, 0.8);
+            color: $stats-color;
+            display: inline;
+            float: left;
+            font-size: 1.2em;
+            line-height: 1.1em;
+            padding: 0 0.7em;
+
+            &:first-child {
+              padding-left: 0;
+          }
+
+          &:last-child {
+              border-right: 0;
+          }
   }
 
   span {
