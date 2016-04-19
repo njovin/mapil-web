@@ -27,10 +27,14 @@
   width: 100%;
   z-index: 9999;
 
-    .nav-link.active a{
-        background-color: darken($blue-300,5%);
-        padding-left: 1em;        
-    }
+    @include media(min-width 800px) {
+        .nav-link.active a{
+            background-color: darken($blue-300,5%);
+            padding-left: 1em;        
+        }
+    }    
+
+
   // Mobile view
 
   .mobile-logo {

@@ -3,10 +3,12 @@ header.secure-navigation {
     position: absolute;
     top: 0;
     left: 0;
-    .nav-link.active a{
-        background-color: darken($blue-300,5%);
-        padding-left: 1em;        
-    }    
+    @include media(min-width 800px) {
+        .nav-link.active a{
+            background-color: darken($blue-300,5%);
+            padding-left: 1em;        
+        }    
+    }
     img {
         float: left;
         margin-left: 20px;
