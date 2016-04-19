@@ -43,6 +43,7 @@ Route::group(['middleware' => ['web']], function () {
 Route::group(['middleware' => ['api', 'auth.stateless']], function () {
     // API
     Route::get('/api/v1/email-addresses', 'ApiAddressController@index');
+    Route::post('/api/v1/email-addresses/{email}', 'ApiAddressController@create');
 });
 
 
