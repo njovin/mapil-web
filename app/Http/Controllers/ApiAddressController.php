@@ -17,6 +17,7 @@ class ApiAddressController extends Controller
      */
     public function index(Request $request)
     {
+        pre_dump(Auth::user(),1);
         die('yay!');
         $page_size = 50;
         $page = $request->input('page',1);

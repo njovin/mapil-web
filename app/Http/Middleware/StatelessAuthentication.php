@@ -21,6 +21,7 @@ class StatelessAuthentication
         if(!$credential) {
             return response('Unauthorized.', 401);
         }
+        Auth::login($credential);
         return $next($request);
     }
 
