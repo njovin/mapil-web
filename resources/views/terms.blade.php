@@ -15,5 +15,7 @@
     <p><strong>Governing Law</strong></p>
     <p>Any claim relating to the Service web site shall be governed by the laws of the State of California without regard to its conflict of law provisions.</p>
     <p><strong>General Terms and Conditions applicable to Use of a Web Site.</strong></p>
+    <p><strong>Privacy Policy</strong></p>
+    <p>We will never share you information with third parties other than what is necessary to conduct our usual business.  Your information will never be sold to anyone.  We may contact you from time to time regarding system updates but there will always be a link to unsubscribe.</p>
 </div>
 @endsection
