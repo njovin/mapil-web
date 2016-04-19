@@ -29,7 +29,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/addresses';
+    protected $redirectTo = '/email-addresses';
 
     /**
      * Create a new authentication controller instance.

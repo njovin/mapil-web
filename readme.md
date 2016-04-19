@@ -1,5 +1,5 @@
 # Server Requirements
-apt-get install libpcre3-dev python-pip
+apt-get install libpcre3-dev python-pip php5-psql
 apt-get install php-pear
 apt-get install php5-dev 
 apt-get install postgresql

@@ -5,6 +5,7 @@ namespace Mapil\Models;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Mapil\Exceptions\SafeException;
 use Webpatser\Uuid\Uuid;
+use Auth;
 
 class EmailAddress extends Model
 {
@@ -29,16 +30,28 @@ class EmailAddress extends Model
         EmailAddress::creating(function ($model) {
             $model->email = strtolower($model->email);
             $model->uuid = Uuid::generate();
+
+            if(get_class(Auth::user()) == User::class) {
+                $user = Auth::user();
+            } elseif(get_class(Auth::user()) == ApiCredential::class) {
+                $user = Auth::user()->user;
+            }
+            // check limits
+            if( $user->email_addresses()->count() > $user->getEmailAddressLimit()) {
+                throw new SafeException("You have reached your limit of " . $user->getEmailAddressLimit() . " email addresses.");
+            }
+
             // check for dupes
             $conflict = EmailAddress::whereEmail($model->email)->first();
             if(in_array($model->email, $model->reserved_addresses) || $conflict) {
                 throw new SafeException("The email address "  . $model->email . " is already in use");
             }
         });
+        parent::boot();
     }
 
     protected $rules = array(
-        'email' => ['email',"required","regex:/[a-zA-Z0-9_]*@mail.mapil.co/"],
+        'email' => ['email',"required","regex:/^[a-zA-Z0-9_]*@mail.mapil.co\$/"],
         'user_id' => ['integer']
     );
     protected $messages = [

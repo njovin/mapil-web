@@ -24,6 +24,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function getEmailAddressLimit()
+    {
+        return 20;
+    }
     public function email_addresses() 
     {
         return $this->hasMany(EmailAddress::class);

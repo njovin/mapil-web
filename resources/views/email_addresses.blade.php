@@ -47,7 +47,13 @@
             <thead>
                 <tr>
                     <th>Email Address</th>
-                    <th class='text-right'><button class='green' onclick="toggleForm()">Add Address</button></th>
+                    <th class='text-right'>
+                        @if(count($email_addresses) < Auth::user()->getEmailAddressLimit()) 
+                            <button class='green' onclick="toggleForm()">Add Address</button>
+                        @else 
+                            <button class='gray' disabled>Add Address (limti reached)</button>
+                        @endif
+                    </th>
                 </tr>
             </thead>
             <tbody id='email-table-body'>
@@ -76,7 +82,7 @@
         if(!confirm('Are you sure you want to delete this address?')) {
             return;
         }
-        http('/addresses','DELETE',{_token: csrf_token, id: id},function(err, response){
+        http('/email-addresses','DELETE',{_token: csrf_token, id: id},function(err, response){
             if(err) {
                 $.growl.error({ message: err, fixed: true });
                 return;
@@ -87,7 +93,7 @@
         });
     }
     function saveAddress() {
-        http('/addresses','POST',{_token: csrf_token, email: $('#new-email-address').val()},function(err, response){
+        http('/email-addresses','POST',{_token: csrf_token, email: $('#new-email-address').val()},function(err, response){
             if(err) {
                 $.growl.error({ message: err, fixed: true });
                 return;

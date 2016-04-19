@@ -8,7 +8,7 @@ use MongoDB\Client;
 use MongoDB\BSON\ObjectID;
 use Auth;
 
-class LogController extends Controller
+class MessageController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -45,14 +45,14 @@ class LogController extends Controller
         // to unset the cursor or you'll get a 502
         $emails = $emailCursor;
         unset($emailCursor);
-        return view('logs')
+        return view('messages')
             ->with('emails',$emails)
             ->with('count',$count)
             ->with('page',$page)
             ->with('offset',$offset)
             ->with('page_size',$page_size);
     }
-    private function getEmail($id) {
+    private function getMessage($id) {
         $client = new Client(env('MONGO_URL'));
         $collection = $client->mapil->emails;
         
@@ -65,20 +65,20 @@ class LogController extends Controller
             'mapil_email' => 0,
             'received_at' => 0]];
 
-        return $collection->findOne( [ '_id' => new ObjectID($id) ], $options);
+        return $collection->findOne( [ 'user_id' => Auth::user()->id, '_id' => new ObjectID($id) ], $options);
     }
     public function viewHtml($id) 
     {
-        $email = $this->getEmail($id);
+        $email = $this->getMessage($id);
         return response()->make(@$email->html, $status = 200, $headers = ['Content-Type: text/html']);
     }
     public function viewText($id) 
     {
-        $email = $this->getEmail($id);
+        $email = $this->getMessage($id);
         return response()->make(@$email->text, $status = 200, $headers = ['Content-Type: text/plain']);
     }
     public function viewJson($id) {
-        $email = $this->getEmail($id);
+        $email = $this->getMessage($id);
 
         return response()->make(@$email, $status = 200, $headers = ['Content-Type: application/json']);
     }

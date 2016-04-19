@@ -32,18 +32,25 @@ Route::group(['middleware' => ['web']], function () {
     Route::delete('/email-addresses', 'EmailAddressController@delete');
 
     // email logs UI
-    Route::get('/email-logs', 'LogController@index');
-    Route::get('/email-logs/{id}/text', 'LogController@viewText');
-    Route::get('/email-logs/{id}/html', 'LogController@viewHtml');
-    Route::get('/email-logs/{id}/json', 'LogController@viewJson');
+    Route::get('/messages', 'MessageController@index');
+    Route::get('/messages/{id}/text', 'MessageController@viewText');
+    Route::get('/messages/{id}/html', 'MessageController@viewHtml');
+    Route::get('/messages/{id}/json', 'MessageController@viewJson');
 
     // API docs
     Route::get('/api-docs', 'ApiDocController@index');
 });
 Route::group(['middleware' => ['api', 'auth.stateless']], function () {
     // API
-    Route::get('/api/v1/email-addresses', 'ApiAddressController@index');
-    Route::post('/api/v1/email-addresses/{email}', 'ApiAddressController@create');
+    Route::get('/api/v1/email-addresses', 'Api\ApiEmailAddressController@index');
+    Route::post('/api/v1/email-addresses/{email}', 'Api\ApiEmailAddressController@create');
+    Route::delete('/api/v1/email-addresses/{email}', 'Api\ApiEmailAddressController@delete');
+
+    Route::get('/api/v1/email-addresses/{email}/messages', 'Api\ApiMessageController@index');
+    Route::get('/api/v1/email-addresses/{email}/messages/{message_id}', 'Api\ApiMessageController@json');
+    Route::get('/api/v1/email-addresses/{email}/messages/{message_id}/text', 'Api\ApiMessageController@text');
+    Route::get('/api/v1/email-addresses/{email}/messages/{message_id}/html', 'Api\ApiMessageController@html');
+
 });
 
 

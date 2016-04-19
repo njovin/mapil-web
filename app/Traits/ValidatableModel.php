@@ -19,7 +19,6 @@ trait ValidatableModel
     public function validate()
     {
         $validator = Validator::make($this->attributes, $this->rules, $this->messages);
-        
         if(!$validator->passes()) {
             foreach($validator->messages()->messages() as $group) {
                 foreach($group as $message) {
