@@ -4,6 +4,7 @@ namespace Mapil\Http\Middleware;
 
 use Auth;
 use Closure;
+use Mapil\Models\ApiCredential;
 
 class StatelessAuthentication
 {
@@ -16,10 +17,11 @@ class StatelessAuthentication
      */
     public function handle($request, Closure $next)
     {
-        enable_query_log();
-        $foo =  Auth::guard('api')->user() ?: $next($request);
-        dump_query_log();
-        die();
+        $credential = ApiCredential::whereToken($request->getUser())->whereSecret($request->getPassword())->first();
+        if(!$credential) {
+            return response('Unauthorized.', 401);
+        }
+        return $next($request);
     }
 
 }
