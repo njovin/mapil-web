@@ -1,5 +1,9 @@
 @import "../variables";
 header.secure-navigation {
+    .nav-link.active a{
+        background-color: darken($blue-300,5%);
+        padding-left: 1em;        
+    }    
     img {
         float: left;
         margin-left: 20px;

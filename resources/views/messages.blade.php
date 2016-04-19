@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.default', ['nav_messages' => 'active'])
 
 @section('pagination')
     <div class="pagination-container">

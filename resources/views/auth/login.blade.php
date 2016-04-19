@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.default', ['nav_login' => 'active'])
 
 @section('content')
 <div class="auth-form-container">

@@ -17,7 +17,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        return 'ok';
+        return view('home');
     }
     public function terms() 
     {

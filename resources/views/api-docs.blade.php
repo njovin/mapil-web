@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.default', ['nav_api_docs' => 'active'])
 
 @section('content')
     <div class='api-docs'>

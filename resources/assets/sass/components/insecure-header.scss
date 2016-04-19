@@ -9,8 +9,9 @@
   $centered-navigation-padding: 1em;
   $centered-navigation-logo-height: 2em;
   $centered-navigation-background: $blue-300;
-  $centered-navigation-color: #fff;
-  $centered-navigation-color-hover: darken(#fff,20%);
+
+  $centered-navigation-color: transparentize(white, 0.3);
+  $centered-navigation-color-hover: #fff;
   $centered-navigation-height: 60px;
   $centered-navigation-item-padding: 1em;
   $centered-navigation-submenu-padding: 1em;
@@ -24,6 +25,10 @@
   width: 100%;
   z-index: 9999;
 
+    .nav-link.active a{
+        background-color: darken($blue-300,5%);
+        padding-left: 1em;        
+    }
   // Mobile view
 
   .mobile-logo {

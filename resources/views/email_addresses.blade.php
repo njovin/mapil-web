@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.default', ['nav_email_addresses' => 'active'])
 
 @section('content')
     <div class='email-addresses'>

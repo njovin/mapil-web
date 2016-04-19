@@ -1,0 +1,41 @@
+@import "../variables";
+.home {
+    @include span-columns(8);
+    @include shift(2);
+
+    @include media(max-width 800px) {
+        @include span-columns(12);
+        @include shift(0);
+    }    
+    .button {
+        margin-top: 10px;
+        font-size: 1.3em;
+    }
+    h1 {
+        font-size: 2.2em;
+        margin-bottom: .1em;
+    }
+    h2 {
+        margin-top: 10px;
+        font-size: 1.3em;
+        margin-bottom: .3em;
+    }
+    h3 {
+        font-size: 1.2em;
+        margin-bottom: .1em;
+        &:not(.top) {
+            margin-top: 1.6em;
+        }
+    }
+    pre, xmp {
+        line-height: 1em;
+        padding: 15px 10px 15px 30px;
+        background-color: darken($blue-300, 15%);
+        color: transparentize(white, 0.3);
+        font-size: 1.1em;
+    }    
+    ul {
+        list-style-type: square;
+        padding-left: 30px;
+    }
+}
