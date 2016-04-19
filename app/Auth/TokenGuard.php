@@ -2,6 +2,8 @@
 namespace Mapil\Auth;
 
 use Illuminate\Auth\TokenGuard as LaravelTokenGuard;
+use Illuminate\Http\Request;
+use Illuminate\Contracts\Auth\UserProvider;
 
 class TokenGuard extends LaravelTokenGuard
 {
