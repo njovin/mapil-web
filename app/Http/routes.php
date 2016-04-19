@@ -11,19 +11,8 @@
 |
 */
 Route::group(['middleware' => ['web']], function () {
-    Route::get('/', function () {
-        return view('welcome');
-    });
-    Route::get('/mongo', function () {
-    $i = 0;
-    while($i < 100) {
-        $client = new MongoDB\Client("mongodb://localhost:27017");
-        $collection = $client->mapil->emails;
-        $result = $collection->insertOne( [ 'subject' => 'Hinterland-' . $i, 'from' => 'hey2@me.com', 'user_id' => 1 ] );   
-        $result = $collection->insertOne( [ 'subject' => 'Hinterland-' . $i, 'from' => 'hey2@me.com', 'user_id' => 1 ] );   
-        $i++;
-    }
-    });
+    Route::get('/', 'HomeController@index');
+    Route::get('/terms', 'HomeController@terms');
     Route::auth();
 
     // Email address managemenr

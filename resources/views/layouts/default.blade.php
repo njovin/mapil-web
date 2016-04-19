@@ -13,11 +13,19 @@
     
 </head>
 <body>
-
-
+    @section('header')
+        @if(Auth::user())
+            @include('components.secure-header')
+        @else 
+            @include('components.insecure-header')
+        @endif
+    @show
     <div class='container'>
         @yield('content')
     </div>
-<script src="{{ elixir('js/all.js') }}"></script>
+    <div class='footer'>
+        <a href='/terms'>Terms</a> | <a href="mailto:nathan@mapil.co">Contact</a>
+    </div>    
+    <script src="{{ elixir('js/all.js') }}"></script>
 </body>
 </html>

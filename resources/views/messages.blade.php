@@ -1,4 +1,4 @@
-@extends('layouts.secure')
+@extends('layouts.default')
 
 @section('pagination')
     <div class="pagination-container">

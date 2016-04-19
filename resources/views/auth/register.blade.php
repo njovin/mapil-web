@@ -1,21 +1,36 @@
-@extends('layouts.auth')
+@extends('layouts.default')
 
 @section('content')
-<form class="auth-form" role="form" method="POST" action="{{ url('/register') }}">
-    {!! csrf_field() !!}
-<!--     if errors
-        each error in errors
-            div.error= error -->
-    <label>E-Mail Address</label>
-    <input type="email" name="email" value="{{ old('email') }}">
-    <label>Password</label>
-    <input type="password" name="password">
-    <label>Confirm Password</label>
-    <input type="password" name="password_confirmation">        
-    <div class='text-center'>
-        <button type="submit">
-            Register
-        </button>
-    </div>
-</form>
+<div class="auth-form-container">
+    <form role="form" method="POST" action="{{ url('/register') }}">
+        {!! csrf_field() !!}
+        <p>
+            <label>E-Mail Address</label>
+            <input type="email" name="email" value="{{ old('email') }}">
+            @if ($errors->has('email'))
+                <div class='flash-error'>
+                    {{ $errors->first('email') }}
+                </div>
+            @endif
+        </p>
+        <p>
+            <label>Password</label>
+            <input type="password" name="password">
+            @if ($errors->has('password'))
+                <div class='flash-error'>
+                    {{ $errors->first('password') }}
+                </div>
+            @endif        
+        </p>
+        <p>
+            <label>Confirm Password</label>
+            <input type="password" name="password_confirmation">        
+        </p>
+        <p>
+            <button type="submit">
+                Register
+            </button>
+        </p>
+    </form>
+</div>
 @endsection

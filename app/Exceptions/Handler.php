@@ -57,7 +57,11 @@ class Handler extends ExceptionHandler
             }
             return Response::json(['message' => $message], $code);
         } else {
-            return view('errors.500');
+                if(get_class($e) == 'Exception') {
+                    return view('errors.500');
+                } else {
+                    return parent::render($request,$e);
+                }
         }
     }
 }
