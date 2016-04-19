@@ -1,4 +1,4 @@
-@extends('layouts.default', ['nav_email_addresses' => 'active'])
+@extends('layouts.default', ['nav_account' => 'active'])
 
 @section('content')
 <div class='account'>
@@ -9,7 +9,7 @@
             <li>{{$message_count}}/10,000<span>Messages Used</span></li>
         </ul>
     </div>
-    
+
     <h1>Change Password</h1>
     <form role="form" method="POST" action="/account">
         {!! csrf_field() !!}  
