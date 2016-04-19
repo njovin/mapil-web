@@ -28,6 +28,9 @@ Route::group(['middleware' => ['web']], function () {
 
     // API docs
     Route::get('/api-docs', 'ApiDocController@index');
+
+    Route::get('/account', 'AccountController@index');
+    Route::post('/account', 'AccountController@save');
 });
 Route::group(['middleware' => ['api', 'auth.stateless']], function () {
     // API

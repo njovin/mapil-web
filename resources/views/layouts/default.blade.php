@@ -21,6 +21,11 @@
         @endif
     @show
     <div class='container'>
+        @if($success = Session::get('success'))
+            <div class='flash-success'>
+                {{ $success }}
+            </div>    
+        @endif
         @yield('content')
     </div>
     <div class='footer'>
