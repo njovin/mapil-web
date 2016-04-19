@@ -1,7 +1,9 @@
 @import "../variables";
 
 .centered-navigation {
-    margin-bottom: 20px;
+    position: abolute;
+    top: 0;
+    left: 0;
   $base-border-radius: 3px !default;
   $dark-gray: #333 !default;
   $large-screen: 53.75em !default;
@@ -39,7 +41,6 @@
 
     img {
       max-height: $centered-navigation-height;
-      opacity: 0.6;
       padding: 0.8em 0;
     }
 

@@ -10,7 +10,7 @@
         <h3 class='top'>Create an email address</h3>
         Create an mail.mapil.co email address (either using our API or the site)
         <pre>
-> curl -XPOST https://mapil.co/api/v1/email-addresses/johnsmith@mail.mapil.co
+> curl -XPOST -u token:secret https://mapil.co/api/v1/email-addresses/johnsmith@mail.mapil.co
 
 { "message": "johnsmith@mail.mapil.co created"}</pre>
         <h3>Send an email</h3>
@@ -18,7 +18,7 @@
         <h3>Check the content</h3>
         Using our API, you can query the entire email data structure including all headers, attachment names and sizes, HTML content, text content, etc.
         <pre>
-> curl -XGET https://mapil.co/api/v1/email-addresses/johnsmith@mail.mapil.co/messages
+> curl -XGET -u token:secret https://mapil.co/api/v1/email-addresses/johnsmith@mail.mapil.co/messages
     
 
 {
