@@ -17,7 +17,8 @@ elixir(function(mix) {
 
     .scripts([
         'http.js',
-        'jquery.growl.js'
+        'jquery.growl.js',
+        'app.js'
     ])
 
     .version(['public/js/all.js','public/css/app.css'])

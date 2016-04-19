@@ -14,67 +14,26 @@
     
 </head>
 <body>
-    <header class="navigation" role="banner">
-      <div class="navigation-wrapper">
-        <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
-        <a href='/'><img src='header-logo.png'></a>
-        <nav role="navigation">
-          <ul id="js-navigation-menu" class="navigation-menu show">
-            <li class="nav-link"><a href="/email-addresses">Email Addresses</a></li>
-            <li class="nav-link"><a href="/messages">Messages</a></li>
-            <li class="nav-link"><a href="/account">Account</a></li>
-            <li class="nav-link"><a href="/api-docs">API Docs</a></li>
-            <li class="nav-link"><a href="/logout">Logout</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+        @if(Auth::user())
+        <header class="navigation" role="banner">
+          <div class="navigation-wrapper">
+            <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+            <a href='/'><img src='header-logo.png'></a>
+            <nav role="navigation">
+              <ul id="js-navigation-menu" class="navigation-menu show">
+                <li class="nav-link"><a href="/email-addresses">Email Addresses</a></li>
+                <li class="nav-link"><a href="/messages">Messages</a></li>
+                <li class="nav-link"><a href="/account">Account</a></li>
+                <li class="nav-link"><a href="/api-docs">API Docs</a></li>
+                <li class="nav-link"><a href="/logout">Logout</a></li>
+              </ul>
+            </nav>
+          </div>
+        </header>
+    @endif
     <div class='container'>
         @yield('content')
     </div>
 <script src="{{ elixir('js/all.js') }}"></script>
-<script>
-
-
-    $(document).ready(function() {
-        // nav
-        var menuToggle = $("#js-mobile-menu").unbind();
-        $("#js-navigation-menu").removeClass("show");
-        console.log(menuToggle);
-        menuToggle.on("click", function(e) {
-        console.log('foo1');
-        e.preventDefault();
-        console.log('foo2');
-        $("#js-navigation-menu").slideToggle(function(){
-        console.log('foo3');
-        if($("#js-navigation-menu").is(":hidden")) {
-        $("#js-navigation-menu").removeAttr("style");
-        }
-        });
-        });
-
-        // modals
-        $("#modal-1").on("change", function() {
-            // if ($(this).is(":checked")) {
-                $("body").addClass("modal-open");
-            // } else {
-                // $("body").removeClass("modal-open");
-            // }
-        });
-                $("body").addClass("modal-open");
-
-        // $(".modal-fade-screen, .modal-close").on("click", function() {
-        //     $(".modal-state:checked").prop("checked", false).change();
-        // });
-
-        // $(".modal-inner").on("click", function(e) {
-        //     e.stopPropagation();
-        // });        
-    }); 
-
-
-
-
-    </script>    
 </body>
 </html>

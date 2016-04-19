@@ -1,0 +1,19 @@
+@import "../variables";
+
+.error {
+    @include span-columns(6);
+    @include shift(3);
+    @include media(max-width 800px) {
+        @include span-columns(12);
+        @include shift(0);
+    }        
+    margin-top: 50px;
+    text-align: center;
+    h1 {
+        color: $blue-300;
+        font-size: 3em;
+    }
+    p {
+        font-size: 1.2em;
+    }
+}

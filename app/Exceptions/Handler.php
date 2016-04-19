@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -22,6 +23,7 @@ class Handler extends ExceptionHandler
         HttpException::class,
         ModelNotFoundException::class,
         ValidationException::class,
+        SafeException::class,
     ];
 
     /**
@@ -46,10 +48,16 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        if($request->wantsJson()) {
-            return Response::json(['message' => $e->getMessage()], 500);
+        if($request->is('api/*') || $request->wantsJson()) {
+            $message = $e->getMessage();
+            $code = 500;
+            if(!$e->getMessage() && $e instanceof NotFoundHttpException) {
+                $code = 404;
+                $message = "Invalid resource. Check that you are using the correct URL";
+            }
+            return Response::json(['message' => $message], $code);
         } else {
-            return parent::render($request, $e);
+            return view('errors.500');
         }
     }
 }

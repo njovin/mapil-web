@@ -26,6 +26,7 @@ class EmailAddressController extends Controller
      */
     public function index()
     {
+        throw new \Exception('wat');
         return view('email_addresses')->with('email_addresses',Auth::user()->email_addresses);
     }
     /**
