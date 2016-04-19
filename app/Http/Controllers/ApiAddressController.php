@@ -2,6 +2,7 @@
 
 namespace Mapil\Http\Controllers;
 
+use Mapil\Models\EmailAddress;
 use Mapil\Http\Requests;
 use Illuminate\Http\Request;
 use MongoDB\Client;
@@ -26,10 +27,10 @@ class ApiAddressController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create($email)
     {
         $email = new EmailAddress();
-        $email->email = $request->input('email');
+        $email->email = $email;
         $email->user_id = Auth::user()->user_id;
         $email->save();
 
