@@ -8,13 +8,15 @@
         </div>
         <h2>How's it work?</h2>
         <h3 class='top'>Create an email address</h3>
-        Create an mail.mapil.co email address (either using our API or the site)
+        Create a mail.mapil.co email address (either using our API or the site)
         <pre>
 > curl -XPOST -u token:secret https://mapil.co/api/v1/email-addresses/johnsmith@mail.mapil.co
 
 { "message": "johnsmith@mail.mapil.co created"}</pre>
+
         <h3>Send an email</h3>
         Send an email from any client to your Mapil email address.
+
         <h3>Check the content</h3>
         Using our API, you can query the entire email data structure including all headers, attachment names and sizes, HTML content, text content, etc.
         <pre>
@@ -56,13 +58,16 @@
         }
     ]
 }          </pre>
+
         <h3>How is this better than Mailinator, etc.?</h3>
         <ul>
+            <li>Secure - only you have access to your messages</li>
             <li>Simple, powerful API</li>
             <li>Built with automated testing in mind</li>
             <li>Programatically provision and release email addresses on-the-fly</li>
             <li>Query rendered HTML, plain text, or schematic content via the API</li>
         </ul>
+
         <h3>Why did you build this?</h3>
         Almost all web systems send emails, whether it be automated reports, transactional emails, or promotional messages. Often times these messages need to be functionally tested as part of the QA process.  We found that it was prohibitively difficult to check the contents of an email, so we built Mapil.
 
