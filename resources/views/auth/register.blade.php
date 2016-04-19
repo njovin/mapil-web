@@ -4,7 +4,7 @@
 <div class="auth-form-container">
     <div class="flex-boxes" id='intro'>
         <div class="flex-box">
-            <h1 class="flex-title">Welcome to Mapil. Signup is free.</h1>
+            <h1 class="flex-title">Welcome to Mapil. It's free.</h1>
             <p>
                 You'll be able to create 20 email addresses and receive 10,000 messages per month.
             </p>
