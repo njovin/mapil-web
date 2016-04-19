@@ -126,7 +126,8 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
-        Illuminate\Auth\AuthServiceProvider::class,
+        // Illuminate\Auth\AuthServiceProvider::class,
+        Mapil\Providers\AuthenticationServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
         Illuminate\Cache\CacheServiceProvider::class,
@@ -152,7 +153,7 @@ return [
          * Application Service Providers...
          */
         Mapil\Providers\AppServiceProvider::class,
-        Mapil\Providers\AuthServiceProvider::class,
+        Mapil\Providers\AuthorizationServiceProvider::class,
         Mapil\Providers\EventServiceProvider::class,
         Mapil\Providers\RouteServiceProvider::class,
 
