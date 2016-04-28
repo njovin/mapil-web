@@ -6,6 +6,13 @@
 <div class="auth-form-container">
     <form role="form" method="POST" action="{{ url('/password/email') }}">
         {!! csrf_field() !!}
+
+        @if (@$status)
+            <div class='flash-success'>
+                {{ $status }}
+            </div>
+        @endif        
+
         <p>
             <label>E-Mail Address</label>
             <input type="email" name="email" value="{{ old('email') }}">
