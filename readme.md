@@ -1,15 +1,7 @@
 # Server Requirements
-apt-get install libpcre3-dev python-pip php5-psql
-apt-get install php-pear
-apt-get install php5-dev 
-apt-get install postgresql
-apt-get install mongo
-apt-get install pkg-config
-apt-get install libssl-dev
-apt-get install php5-mongo
+apt-get install libpcre3-dev python-pip php5-psql php-pear php5-dev  postgresql mongo pkg-config libssl-dev php5-mongo
 pecl install mongo
 pecl install mongodb
-
 
 add to php.ini:
 

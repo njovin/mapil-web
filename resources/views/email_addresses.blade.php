@@ -30,10 +30,10 @@
                             <span class='api-secret'>
                                 {{Auth::user()->api_credentials()->first()->secret}}
                             </span>
-                            <span class='toggle-show' onclick="toggleSecret()">
+                            <span class='toggle-show' onclick="toggleApiSecret()">
                                 Show
                             </span>
-                            <span class='toggle-hide' onclick="toggleSecret()">
+                            <span class='toggle-hide' onclick="toggleApiSecret()">
                                 Hide
                             </span>                            
                         </span>
@@ -106,9 +106,7 @@
         });
         return false;
     }
-    function toggleSecret() {
-        $('#api-secret-group').toggleClass('shown');
-    }
+
     function updatePreview() {
         var val = $('#new-email-address').val();
         if(!validate(val)) {

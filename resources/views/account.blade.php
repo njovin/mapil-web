@@ -10,6 +10,25 @@
         </ul>
     </div>
 
+    <h1>API Credentials</h1>
+    @foreach($api_credentials as $credentials)
+    <p>
+        <strong>Token:</strong> {{$credentials->token}}
+        <strong>Secret:</strong>
+        <span id='api-secret-group' class='api-secret-group'>
+            <span class='api-secret'>
+                {{$credentials->secret}}
+            </span>
+            <span class='toggle-show' onclick="toggleApiSecret()">
+                Show
+            </span>
+            <span class='toggle-hide' onclick="toggleApiSecret()">
+                Hide
+            </span>                            
+        </span>
+
+    </p>
+    @endforeach
     <h1>Change Password</h1>
     <form role="form" method="POST" action="/account">
         {!! csrf_field() !!}  

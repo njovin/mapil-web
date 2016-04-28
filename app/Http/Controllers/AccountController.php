@@ -29,10 +29,13 @@ class AccountController extends Controller
     {
         // TODO: get count of mongo documents
         $message_count = 0;
-        // TODO: count emails
+
         $email_address_count = Auth::user()->email_addresses()->count();
 
-        return view('account')->with('message_count',$message_count)->with('email_address_count',$email_address_count);
+        return view('account')
+            ->with('api_credentials',Auth::user()->api_credentials)
+            ->with('message_count',$message_count)
+            ->with('email_address_count',$email_address_count);
     }
     /**
      * Show the application dashboard.
