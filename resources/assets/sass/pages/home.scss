@@ -46,6 +46,7 @@
         background-color: darken($blue-300, 15%);
         color: transparentize(white, 0.3);
         font-size: 1.1em;
+        overflow: scroll;
     }    
     ul {
         list-style-type: square;
