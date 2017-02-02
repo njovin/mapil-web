@@ -79,7 +79,7 @@ DELETE /api/v1/email-addresses/foo@mail.mapil.co
             <div class='text-container'>
                 List all messages sent to this address. You may specify offset and limit as GET variables
 <xmp>
-GET /api/v1/email-addresses/bar@mail.mapil.co?offset=23&limit=1
+GET /api/v1/email-addresses/bar@mail.mapil.co/messages?offset=23&limit=1
 
 {
   "offset": 23,
