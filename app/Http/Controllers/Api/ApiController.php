@@ -12,8 +12,8 @@ class ApiController extends BaseController
 
     public function __construct(Request $request) 
     {
-        $this->offset = $request->input('offset',0);
-        $this->limit = $request->input('limit',50);
+        $this->offset = (int) $request->input('offset',0);
+        $this->limit = (int) $request->input('limit',50);
     }
     /**
      * Show the application dashboard.
