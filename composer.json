@@ -7,9 +7,9 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
-        "predis/predis": "*",
+        "predis/predis": "1.0.3",
         "webpatser/laravel-uuid": "2.*",
-         "mongodb/mongodb": "*",
+         "mongodb/mongodb": "1.0.2",
         "mixpanel/mixpanel-php" : "2.6.2",
          "guzzlehttp/guzzle": "~5.3|~6.0"
     },
