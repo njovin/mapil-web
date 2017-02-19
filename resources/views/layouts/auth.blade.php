@@ -19,5 +19,6 @@
         @yield('content')
     </div>
 <script src="{{ elixir('js/all.js') }}"></script>
+    @include('components.intercom')
 </body>
 </html>
