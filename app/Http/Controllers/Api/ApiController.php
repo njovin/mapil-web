@@ -4,6 +4,7 @@ namespace Mapil\Http\Controllers\Api;
 
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Mixpanel;
 
 class ApiController extends BaseController
