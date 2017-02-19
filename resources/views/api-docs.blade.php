@@ -196,8 +196,7 @@ GET /api/v1/email-addresses/bar@mail.mapil.co/messages/5715aaf9cfd845e640625158
 
     </div>
 <script>
- 
-
-</script> 
+    mixpanel.track('api_docs_viewed');
+</script>
 
 @endsection

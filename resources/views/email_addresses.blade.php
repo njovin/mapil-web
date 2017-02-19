@@ -122,7 +122,7 @@
             $('#address-preview').text("The address " + val + "\@mail.mapil.co will be created");
         }
     }
-
-</script> 
+    mixpanel.track('email_addresses_page_viewed');
+</script>
 
 @endsection

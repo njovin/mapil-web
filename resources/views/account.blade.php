@@ -55,6 +55,8 @@
 </div>
 
 
-
+<script>
+    mixpanel.track('account_page_viewed');
+</script>
 
 @endsection

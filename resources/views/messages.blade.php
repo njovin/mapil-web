@@ -49,8 +49,7 @@
         @yield('pagination')
     </div>
 <script>
- 
-
-</script> 
+    mixpanel.track('messages_page_viewed');
+</script>
 
 @endsection

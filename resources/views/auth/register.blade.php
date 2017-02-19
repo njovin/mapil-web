@@ -41,4 +41,7 @@
         </p>
     </form>
 </div>
+    <script>
+        mixpanel.track('signup_page_viewed');
+    </script>
 @endsection
