@@ -18,7 +18,7 @@
         </p>
 
         <p>
-            <label>Password</label>
+            <label>New Password</label>
             <input type="password" name="password">
             @if ($errors->has('password'))
                 <div class='flash-error'>
@@ -26,6 +26,11 @@
                 </div>
             @endif
         </p>
+
+                <p>
+                    <label>Confirm New Password</label>
+                    <input type="password" name="password_confirmation">
+                    </p>
 
         <p>
             <button type="submit" class="btn btn-primary">
