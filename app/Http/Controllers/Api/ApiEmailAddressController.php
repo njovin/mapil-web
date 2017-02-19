@@ -37,6 +37,7 @@ class ApiEmailAddressController extends ApiController
      */
     public function create($email_address)
     {
+        $this->trackEvent("api_email_address_created");
         try {
             $email = new EmailAddress();
             $email->email = $email_address;
@@ -55,6 +56,7 @@ class ApiEmailAddressController extends ApiController
      */
     public function delete($email_address)
     {
+        $this->trackEvent("api_email_address_deleted");
         $email = EmailAddress::whereEmail(strtolower($email_address))->whereuserId(Auth::user()->user_id)->first();
         if($email) {
             $email->delete();

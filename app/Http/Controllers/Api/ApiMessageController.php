@@ -21,6 +21,7 @@ class ApiMessageController extends ApiController
      */
     public function index(Request $request, $email_address, $message_id = null)
     {
+        $this->trackEvent("api_messages_listed");
         $filter = [
             'user_id' => Auth::user()->user_id,
             'mapil_email' => $email_address
@@ -57,12 +58,9 @@ class ApiMessageController extends ApiController
         
         return $this->recordsetResponse($emails, $count);
     }
-        
-    public function get($email_address, $message_id = null)
-    {
 
-    }
     private function getMessage($email_address, $message_id) {
+        $this->trackEvent("api_message_fetched");
         $client = new Client(env('MONGO_URL'));
         $collection = $client->mapil->emails;
         

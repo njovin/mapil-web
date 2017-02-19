@@ -10,6 +10,7 @@
         "predis/predis": "*",
         "webpatser/laravel-uuid": "2.*",
          "mongodb/mongodb": "*",
+        "mixpanel/mixpanel-php" : "2.6.2",
          "guzzlehttp/guzzle": "~5.3|~6.0"
     },
     "require-dev": {

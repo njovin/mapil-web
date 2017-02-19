@@ -32,6 +32,6 @@
         <a href='/terms'>Terms</a> | <a href="mailto:nathan@mapil.co">Contact</a>
     </div>    
     <script src="{{ elixir('js/all.js') }}"></script>
-    @include('components.intercom')
+    @include('components.mixpanel')
 </body>
 </html>

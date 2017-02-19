@@ -4,6 +4,7 @@ namespace Mapil\Http\Controllers\Api;
 
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
+use Mixpanel;
 
 class ApiController extends BaseController
 {
@@ -42,6 +43,13 @@ class ApiController extends BaseController
         ];
 
         return response()->json($json);
-    }    
+    }
+    public function trackEvent($eventName) {
+        $mp = Mixpanel::getInstance(env("MIXPANEL_TOKEN"));
+        $mp->people->set(Auth::user()->user_id, array(
+            '$email'            => Auth::user()->user->email
+        ));
+        $mp->track($eventName);
+    }
   
 }

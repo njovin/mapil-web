@@ -35,6 +35,7 @@ class EmailAddressController extends Controller
      */
     public function save(Request $request)
     {
+        $this->trackEvent("web_email_address_saved");
         $email = new EmailAddress();
         $email->email = $request->input('email') . '@mail.mapil.co';
         $email->user_id = Auth::user()->id;
@@ -44,6 +45,7 @@ class EmailAddressController extends Controller
     }    
     public function delete(Request $request)
     {
+        $this->trackEvent("web_email_address_deleted");
         $email = EmailAddress::whereUuid($request->input('id'))->whereUserId(Auth::user()->id)->first();
         if($email) {
             $email->delete();
