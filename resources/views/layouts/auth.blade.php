@@ -10,7 +10,7 @@
     <!-- Styles -->
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    
+    @include('components.mixpanel')
 </head>
 <body>
 
@@ -19,6 +19,6 @@
         @yield('content')
     </div>
 <script src="{{ elixir('js/all.js') }}"></script>
-    @include('components.mixpanel')
+
 </body>
 </html>
