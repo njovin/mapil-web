@@ -11,6 +11,8 @@
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     @include('components.mixpanel')
+    @include('components.mirrorshades-analytics')
+    @include('components.gauges-analytics')
 </head>
 <body>
     @section('header')
