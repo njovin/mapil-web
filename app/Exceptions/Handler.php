@@ -1,67 +1,37 @@
 <?php
 
-namespace Mapil\Exceptions;
+namespace App\Exceptions;
 
-use Exception;
-use Illuminate\Validation\ValidationException;
-use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Response;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
     /**
-     * A list of the exception types that should not be reported.
+     * A list of the exception types that are not reported.
      *
      * @var array
      */
     protected $dontReport = [
-        AuthorizationException::class,
-        HttpException::class,
-        ModelNotFoundException::class,
-        ValidationException::class,
-        SafeException::class,
+        //
     ];
 
     /**
-     * Report or log an exception.
+     * A list of the inputs that are never flashed for validation exceptions.
      *
-     * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
-     *
-     * @param  \Exception  $e
-     * @return void
+     * @var array
      */
-    public function report(Exception $e)
-    {
-        parent::report($e);
-    }
+    protected $dontFlash = [
+        'password',
+        'password_confirmation',
+    ];
 
     /**
-     * Render an exception into an HTTP response.
+     * Register the exception handling callbacks for the application.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $e
-     * @return \Illuminate\Http\Response
+     * @return void
      */
-    public function render($request, Exception $e)
+    public function register()
     {
-        if($request->is('api/*') || $request->wantsJson()) {
-            $message = $e->getMessage();
-            $code = 500;
-            if(!$e->getMessage() && $e instanceof NotFoundHttpException) {
-                $code = 404;
-                $message = "Invalid resource. Check that you are using the correct URL";
-            }
-            return Response::json(['message' => $message], $code);
-        } else {
-                if(get_class($e) == 'Exception') {
-                    return view('errors.500');
-                } else {
-                    return parent::render($request,$e);
-                }
-        }
+        //
     }
 }
