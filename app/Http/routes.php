@@ -15,7 +15,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/terms', 'HomeController@terms');
     Route::auth();
 
-    // Email address managemenr
+    // Email address management
     Route::get('/email-addresses', 'EmailAddressController@index');
     Route::post('/email-addresses', 'EmailAddressController@save');
     Route::delete('/email-addresses', 'EmailAddressController@delete');
@@ -42,6 +42,9 @@ Route::group(['middleware' => ['api', 'auth.stateless']], function () {
     Route::get('/api/v1/email-addresses/{email}/messages/{message_id}', 'Api\ApiMessageController@json');
     Route::get('/api/v1/email-addresses/{email}/messages/{message_id}/text', 'Api\ApiMessageController@text');
     Route::get('/api/v1/email-addresses/{email}/messages/{message_id}/html', 'Api\ApiMessageController@html');
+
+    Route::delete('/api/v1/email-addresses/{email}/messages/{message_id}', 'Api\ApiMessageController@deleteMessage');
+    Route::delete('/api/v1/email-addresses/{email}/messages', 'Api\ApiMessageController@deleteMessages');
 
 });
 
