@@ -5,7 +5,7 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": ">=5.5.9",
+        "php": "5.5.9",
         "laravel/framework": "5.2.*",
         "predis/predis": "1.0.3",
         "webpatser/laravel-uuid": "2.*",
@@ -25,7 +25,7 @@
             "app/Helpers/DebugHelpers.php",
             "app/Helpers/DataHelpers.php",
             "app/Helpers/AuthHelpers.php"
-        ],        
+        ],
         "classmap": [
             "database"
         ],
