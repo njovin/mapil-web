@@ -12,7 +12,7 @@ class Webhooks extends Migration
      */
     public function up()
     {
-        Schema::table('accounts', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->boolean('webhooks_enabled')->default(false);
             $table->string('webhook_url')->nullable();
         });
@@ -25,7 +25,7 @@ class Webhooks extends Migration
      */
     public function down()
     {
-        Schema::table('accounts', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('webhooks_enabled');
             $table->dropColumn('webhook_url');
         });
