@@ -19,7 +19,7 @@ class InternalWebhookController extends Controller
     public function receive(Request $request)
     {
         \Log::info($request->all());
-        $address = EmailAddress::whereEmail()->first();
+        $address = EmailAddress::whereEmail($request->get('mapil_email'))->first();
         if ($address) {
             \Log::info('address found');
             if ($address->user && $address->user->webhook_url) {
