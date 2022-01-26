@@ -18,10 +18,11 @@ class InternalWebhookController extends Controller
      */
     public function receive(Request $request)
     {
-        \Log::info($request->all());
+        return response()->json([]);
+
+        // All of this is disabled because I'm too lazy to upgrade PHP
         $address = EmailAddress::whereEmail($request->get('mapil_email'))->first();
         if ($address) {
-            \Log::info('address found');
             if ($address->user && $address->user->webhook_url) {
                 $client = new Client([
                                          // You can set any number of default request options.
@@ -31,7 +32,6 @@ class InternalWebhookController extends Controller
                 $client->request('POST', $address->user->webhook_url, [
                     'json' => $request->all()
                 ]);
-                \Log::info('sending to ' . $address->user->webhook_url);
             }
         }
         return response()->json([]);
