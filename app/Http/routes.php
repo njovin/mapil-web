@@ -48,4 +48,8 @@ Route::group(['middleware' => ['api', 'auth.stateless']], function () {
 
 });
 
+Route::group(['middleware' => []], function () {
+    Route::post('/internal/webhook', 'InternalWebhookController@receive');
+});
+
 
