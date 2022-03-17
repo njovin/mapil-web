@@ -11,14 +11,13 @@
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     @include('components.mixpanel')
-    @include('components.mirrorshades-analytics')
     @include('components.gauges-analytics')
 </head>
 <body>
     @section('header')
         @if(Auth::user())
             @include('components.secure-header')
-        @else 
+        @else
             @include('components.insecure-header')
         @endif
     @show
@@ -26,13 +25,13 @@
         @if($success = Session::get('success'))
             <div class='flash-success'>
                 {{ $success }}
-            </div>    
+            </div>
         @endif
         @yield('content')
     </div>
     <div class='footer'>
         <a href='/terms'>Terms</a> | <a href="mailto:nathan@mapil.co">Contact</a>
-    </div>    
+    </div>
     <script src="{{ elixir('js/all.js') }}"></script>
 
 </body>
